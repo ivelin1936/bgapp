@@ -1,0 +1,37 @@
+version: "3.8"
+services:
+    web:
+        image: ivelin1936/bgapp-hw-web
+        #build:
+            #context: .
+            #dockerfile: Dockerfile.web
+        deploy:
+            replicas: 5
+        ports:
+            - 8080:80
+        volumes:
+            - "${PROJECT_ROOT}:/usr/share/nginx/html:ro"
+            - "${PROJECT_ROOT}:/var/www/html:ro"
+        networks:
+            - app-network
+        restart: always
+        #depends_on:
+            #- php
+            #- db
+    #php:
+        #image: nanoninja/php-fpm
+        #restart: always
+        #volumes:
+            #- "${PROJECT_ROOT}:/usr/share/nginx/html"
+    db:
+        image: ivelin1936/bgapp-hw-db
+        #build:
+            #context: .
+            #dockerfile: Dockerfile.db
+        networks:
+            - app-network
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: "${DB_ROOT_PASSWORD}"
+networks:
+    app-network:
