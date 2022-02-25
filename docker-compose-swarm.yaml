@@ -19,7 +19,6 @@ services:
             - php-fpm
         depends_on:
             - php-fpm
-            #- db
     php-fpm:
         image: php:8-fpm
         restart: always
