@@ -18,8 +18,8 @@ services:
         #links:
             #- php-fpm
         depends_on: 
-            - php-fpm
-    php-fpm:
+            - php
+    php:
         image: php:8-fpm
         #restart: always
         volumes:
