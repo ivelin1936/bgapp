@@ -19,7 +19,7 @@ services:
             - php
         #depends_on: 
             #php:
-               condition: service_healthy
+               #condition: service_healthy
     php:
         image: php:8-fpm
         restart: always
