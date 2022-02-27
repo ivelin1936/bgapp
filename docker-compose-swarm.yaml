@@ -19,8 +19,8 @@ services:
         restart: always
         #links:
             #- php-fpm
-        depends_on: 
-            - php
+        #depends_on: 
+            #- php
     php:
         image: php:8-fpm
         #restart: always
