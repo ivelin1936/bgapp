@@ -18,7 +18,8 @@ services:
         #links:
             #- php-fpm
         depends_on: 
-            - php
+            php:
+               condition: service_healthy
     php:
         image: php:8-fpm
         #restart: always
