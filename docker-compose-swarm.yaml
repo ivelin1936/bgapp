@@ -15,16 +15,18 @@ services:
         networks:
             - app-network
         restart: always
-        #links:
-            #- php-fpm
-        depends_on: 
-            php:
+        links:
+            - php
+        #depends_on: 
+            #php:
                condition: service_healthy
     php:
         image: php:8-fpm
-        #restart: always
+        restart: always
         volumes:
             - "${PROJECT_ROOT}:/var/www/html:ro"
+        networks:
+            - app-network
     db:
         image: ivelin1936/bgapp-hw-db
         #build:
